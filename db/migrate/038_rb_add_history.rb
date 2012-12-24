@@ -24,7 +24,8 @@ class RbAddHistory < ActiveRecord::Migration
     end
 
     puts "Rebuilding history..."
-    RbIssueHistory.rebuild
+    # There is no rb_journals table
+    #RbIssueHistory.rebuild
     puts "Rebuild done"
   end
 
