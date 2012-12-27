@@ -117,11 +117,10 @@ module BacklogsPlugin
             snippet += '</p>'
 
             if issue.descendants.length != 0 && !issue.new_record?
-              snippet += javascript_include_tag 'jquery/jquery-1.6.2.min.js', :plugin => 'redmine_backlogs'
               snippet += <<-generatedscript
 
                 <script type="text/javascript">
-                  var $j = jQuery.noConflict();
+                  var $j = jQuery;
 
                   $j(document).ready(function() {
                     $j('#issue_estimated_hours').attr('disabled', 'disabled');
@@ -181,11 +180,10 @@ module BacklogsPlugin
 
             # this wouldn't be necesary if the schedules plugin
             # didn't disable the contextual hook
-            snippet += javascript_include_tag 'jquery/jquery-1.6.2.min.js', :plugin => 'redmine_backlogs'
             snippet += <<-generatedscript
 
               <script type="text/javascript">
-                  var $j = jQuery.noConflict();
+                  var $j = jQuery;
                 $j(document).ready(function() {
                   $j('#edit_wiki_page_action').detach().appendTo("div.contextual");
                 });

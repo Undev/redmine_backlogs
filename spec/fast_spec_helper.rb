@@ -1,4 +1,4 @@
-require 'config'
+require File.expand_path('../config', __FILE__)
 
 plugin_path = 'plugins/redmine_backlogs'
 $:.push File.expand_path("#{plugin_path}/app/helpers")

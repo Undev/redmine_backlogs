@@ -10,25 +10,9 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
-  begin
-    require 'cucumber/rails'
-  rescue LoadError # a hacky way to determine cucumber-rails version
-  ENV["RAILS_ENV"] ||= "cucumber"
-  require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
-
-  require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
-  require 'cucumber/rails/rspec'
-  require 'cucumber/rails/world'
-  require 'cucumber/rails/active_record'
-  require 'cucumber/web/tableish'
-
-
-  require 'capybara/rails'
-  require 'capybara/cucumber'
-  require 'capybara/session'
-  require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
-
-  end
+  ENV["RAILS_ROOT"] ||= File.expand_path('../../../../../', __FILE__)
+  puts ENV["RAILS_ROOT"]
+  require 'cucumber/rails'
 
   # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
   # order to ease the transition to Capybara we set the default here. If you'd

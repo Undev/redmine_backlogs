@@ -1,4 +1,4 @@
-require 'fast_spec_helper'
+require File.expand_path('../../fast_spec_helper', __FILE__)
 
 class ScrumStatistics
   def initialize(score)

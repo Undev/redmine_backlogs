@@ -2,7 +2,7 @@ if(RB==null){
   var RB = {};
 }
 
-if (RB.$ == null) { RB.$ = jQuery.noConflict(); }
+if (RB.$ == null) { RB.$ = jQuery; }
 
 RB.Object = {
   // Douglas Crockford's technique for object extension
@@ -21,19 +21,19 @@ RB.Object = {
       }
     }
     return obj;
-  }  
+  }
 };
 
 
 // Object factory for redmine_backlogs
 RB.Factory = RB.Object.create({
-  
+
   initialize: function(objType, el){
     obj = RB.Object.create(objType);
     obj.initialize(el);
     return obj;
-  }  
-  
+  }
+
 });
 
 // Utilities
@@ -46,7 +46,7 @@ RB.Dialog = RB.Object.create({
                     modal: true
                  });
   },
-  
+
   notice: function(msg){
     if(typeof console != "undefined" && console != null) console.log(msg);
   }
@@ -94,7 +94,7 @@ RB.UserPreferences = RB.Object.create({
     if (global) return RB.$.cookie(key, {path: '/rb'});
     return RB.$.cookie(key);
   },
-  
+
   set: function(key, value, global){
     if (global) {
       RB.$.cookie(key, value, { expires: 365 * 10, path: '/rb' });
