@@ -82,8 +82,6 @@ class ReleaseBurndown
 end
 
 class RbRelease < ActiveRecord::Base
-  self.table_name = 'releases'
-
   unloadable
 
   belongs_to :project

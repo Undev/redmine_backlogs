@@ -1,7 +1,6 @@
 require 'pp'
 
 class RbIssueHistory < ActiveRecord::Base
-  set_table_name 'rb_issue_history'
   belongs_to :issue
 
   serialize :history, Array
@@ -24,7 +23,7 @@ class RbIssueHistory < ActiveRecord::Base
   def filter(sprint, status=nil)
     h = Hash[*(self.expand.collect{|d| [d[:date], d]}.flatten)]
     filtered = sprint.days.collect{|d| h[d] ? h[d] : {:date => d, :origin => :filter}}
-    
+
     # see if this issue was closed after sprint end
     if filtered[-1][:status_open]
       self.history.select{|h| h[:date] > sprint.effective_date}.each{|h|
@@ -293,7 +292,7 @@ class RbIssueHistory < ActiveRecord::Base
 
   def touch_sprint
     self.history.select{|h| h[:sprint]}.uniq{|h| "#{h[:sprint]}::#{h[:tracker]}"}.each{|h|
-      RbSprintBurndown.find_or_initialize_by_version_id(h[:sprint]).touch!(h[:tracker] == :story ? self.issue.id : nil) 
+      RbSprintBurndown.find_or_initialize_by_version_id(h[:sprint]).touch!(h[:tracker] == :story ? self.issue.id : nil)
     }
   end
 
@@ -312,7 +311,7 @@ class RbIssueHistory < ActiveRecord::Base
       date ||= self.history[0][:date] # the after_create calls this function without a parameter, so we know it's the creation call. Get the `yesterday' entry.
       parent_history_index = p.history.history.index{|d| d[:date] == date} # does the parent have an history entry on that date?
       if parent_history_index.nil? # if not, stretch the history to get the values at that date
-        parent_data = p.history.expand.detect{|d| d[:date] == date} 
+        parent_data = p.history.expand.detect{|d| d[:date] == date}
       else # if so, grab that entry
         parent_data = p.history.history[parent_history_index]
       end
