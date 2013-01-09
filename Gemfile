@@ -21,7 +21,7 @@ group :test do
   gem "poltergeist", "~>0.6.0"
   gem "rspec", '~>2.11.0'
   gem "rspec-rails", '~> 2.11.0'
-  gem "simplecov", "~>0.6"
+  gem "simplecov"
   gem "ruby-prof", :platforms => [:ruby]
   gem "spork"
   gem "timecop", '~> 0.3.5'
