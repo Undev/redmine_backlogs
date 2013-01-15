@@ -19,8 +19,8 @@ group :test do
   gem "database_cleaner"
   gem "gherkin", "=2.6.8"
   gem "poltergeist", "~>0.6.0"
-  gem "rspec", '~>2.11.0'
-  gem "rspec-rails", '~> 2.11.0'
+  gem "rspec"
+  gem "rspec-rails"
   gem "simplecov"
   gem "ruby-prof", :platforms => [:ruby]
   gem "spork"
