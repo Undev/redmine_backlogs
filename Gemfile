@@ -1,6 +1,6 @@
 gem "holidays", "=1.0.3"
 gem "icalendar"
-gem "nokogiri"
+#gem 'nokogiri', '< 1.6.0'
 gem "prawn"
 gem 'json'
 gem "open-uri-cached"
@@ -13,12 +13,12 @@ group :test do
   gem 'chronic'
   gem 'ZenTest', "=4.5.0" # 4.6.0 has a nasty bug that breaks autotest
   gem 'autotest-rails'
-  gem 'capybara'
+  #gem 'capybara'
   gem 'cucumber-rails'
   gem "culerity"
   gem "database_cleaner"
   gem "gherkin", "=2.6.8"
-  gem "poltergeist", "~>0.6.0"
+  #gem "poltergeist", "~>0.6.0"
   gem "rspec"
   gem "rspec-rails"
   gem "simplecov"
